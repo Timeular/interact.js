@@ -1,7 +1,7 @@
 /**
- * interact.js v1.3.4
+ * interact.js v1.3.4+sha.04c8960-dirty
  *
- * Copyright (c) 2012-2018 Taye Adeyemi <dev@taye.me>
+ * Copyright (c) 2012-2019 Taye Adeyemi <dev@taye.me>
  * Released under the MIT License.
  * https://raw.github.com/taye/interact.js/master/LICENSE
  */
@@ -933,6 +933,9 @@ var Interaction = function () {
   };
 
   Interaction.prototype.pointerMove = function pointerMove(pointer, event, eventTarget) {
+    if (this.element && !this.element.parentElement) {
+      return;
+    }
     if (!this.simulation) {
       this.updatePointer(pointer);
       utils.setCoords(this.curCoords, this.pointers);

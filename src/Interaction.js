@@ -150,6 +150,9 @@ class Interaction {
   }
 
   pointerMove (pointer, event, eventTarget) {
+    if (this.element && !this.element.parentElement) {
+      return;
+    }
     if (!this.simulation) {
       this.updatePointer(pointer);
       utils.setCoords(this.curCoords, this.pointers);
